@@ -133,3 +133,11 @@ MySQL主从复制的核心是二进制日志（Binlog）。步骤如下：
 - 通过 `show engine innodb status;` 查看死锁日志。
 - 优化索引，减少锁的范围。
 - 将大事务拆分为小事务。
+
+#### Mysql有哪些引擎？
+
+常见的有InnoDB和MyISam，主要区别是InnoDB支持事务，MyISAM不支持事务。以及，MyISAM仅支持表锁，而InnoDB不仅支持表锁，还支持行锁。
+
+#### Update b = b + 1 where b = 5 在可重复读隔离级别下，5个线程并发执行，最后b的值是多少？
+
+10.
