@@ -1,0 +1,996 @@
+Java架构师成长路径：从入门到资深
+本课程旨在为不同层次的Java开发者提供一条清晰、系统的进阶路线，帮助大家从零基础逐步成长为能够驾驭复杂系统、具备全局视野的资深Java架构师。课程内容按阶段划分，每个阶段都包含知识点大纲（宏观结构）和知识点列表及详解（微观剖析），力求把每个知识点讲透，让学习者不仅知其然，更知其所以然。
+
+第一阶段：Java初级工程师
+目标：掌握Java核心语法、面向对象思想、常用类库及基本开发工具，能够独立完成小型模块的开发，具备扎实的编程基础。
+
+知识点大纲
+Java基础语法
+
+面向对象编程
+
+常用基础类库
+
+异常处理
+
+多线程基础
+
+集合框架
+
+I/O流
+
+网络编程基础
+
+JDBC与数据库基础
+
+开发工具与版本控制
+
+数据结构与算法入门
+
+设计原则初步
+
+知识点列表及详解
+1. Java基础语法
+核心概念：Java程序的编译与运行机制、标识符、关键字、数据类型（基本类型与引用类型）、变量与常量、运算符（算术、关系、逻辑、位运算）、表达式与语句。
+
+控制流程：if-else、switch-case、for/while/do-while循环、break与continue。
+
+数组：一维/二维数组的声明、初始化、遍历、常见操作（复制、排序）。
+
+方法：方法的定义、重载、参数传递（值传递）、递归。
+
+讲解要点：
+
+强调Java是强类型语言，类型必须明确。
+
+通过内存图讲解基本类型与引用类型的区别。
+
+用实际代码演示各种控制流程的适用场景。
+
+讲解数组的存储原理（连续内存空间）及长度不可变性。
+
+2. 面向对象编程
+核心概念：类与对象、构造方法、封装、继承、多态、抽象类、接口。
+
+关键字：this、super、static、final、instanceof。
+
+详解：
+
+封装：通过访问修饰符（private、default、protected、public）隐藏内部细节，暴露必要方法。
+
+继承：子类继承父类的非私有成员，方法重写，super调用父类构造器或方法。
+
+多态：编译时类型与运行时类型不一致，通过方法重写和父类引用指向子类对象实现。讲解动态绑定机制。
+
+抽象类与接口：对比两者设计意图（抽象类用于模板，接口用于契约），Java 8后接口的默认方法和静态方法。
+
+讲解要点：
+
+用现实世界例子（如动物、交通工具）帮助理解抽象概念。
+
+手绘类图展示继承层次和关联关系。
+
+强调多态带来的扩展性，讲解instanceof与类型转换的安全使用。
+
+3. 常用基础类库
+核心类：Object（equals、hashCode、toString、clone）、String、StringBuilder/StringBuffer、包装类、Math、Random、Date与Calendar（及Java 8时间API简介）。
+
+详解：
+
+String的不可变性、字符串常量池、常用方法（substring、indexOf、split等）。
+
+StringBuilder与StringBuffer的区别（线程安全与非线程安全），字符串拼接性能对比。
+
+包装类的自动装箱/拆箱、缓存范围（如Integer缓存-128~127）。
+
+Java 8时间API：LocalDate、LocalTime、LocalDateTime、Duration、Period，为何替代旧API。
+
+讲解要点：
+
+通过内存分析展示字符串常量池的变化。
+
+编写代码比较String拼接与StringBuilder的性能差异。
+
+演示日期格式化与解析的常见陷阱。
+
+4. 异常处理
+核心概念：异常体系（Throwable、Error、Exception、RuntimeException）、检查型异常与非检查型异常。
+
+处理方式：try-catch-finally、try-with-resources、throws/throw。
+
+自定义异常：何时需要自定义异常，如何定义。
+
+讲解要点：
+
+通过栈轨迹（stack trace）理解异常传播过程。
+
+强调finally的执行时机（即使在return前也会执行）。
+
+演示try-with-resources如何自动关闭资源（AutoCloseable接口）。
+
+区分抛出异常与捕获异常的适用场景（例如：底层抛给上层处理）。
+
+5. 多线程基础
+核心概念：进程与线程、并发与并行、线程生命周期（新建、就绪、运行、阻塞、死亡）。
+
+线程创建：继承Thread、实现Runnable、实现Callable（配合Future）。
+
+线程常用方法：start()、run()、sleep()、yield()、join()。
+
+线程安全问题：临界资源、synchronized关键字（对象锁、类锁）、volatile关键字（可见性）。
+
+线程通信：wait()、notify()、notifyAll()。
+
+讲解要点：
+
+用多窗口售票案例演示线程安全问题，并逐步引入synchronized解决。
+
+分析synchronized底层（monitor锁）及wait/notify必须在同步块中调用的原因。
+
+通过volatile解释内存可见性，并与synchronized对比。
+
+演示join()如何等待子线程结束。
+
+6. 集合框架
+核心接口：Collection（List、Set、Queue）、Map。
+
+常用实现类：
+
+List：ArrayList、LinkedList、Vector（古老）。
+
+Set：HashSet、LinkedHashSet、TreeSet。
+
+Map：HashMap、LinkedHashMap、TreeMap、Hashtable、ConcurrentHashMap（简单介绍并发版本）。
+
+遍历方式：Iterator、增强for、forEach方法（Java 8）、Stream（简介）。
+
+工具类：Collections、Arrays。
+
+详解：
+
+ArrayList底层数组实现，扩容机制（grow方法，1.5倍）。
+
+LinkedList底层双向链表，适合频繁插入删除。
+
+HashSet底层依赖HashMap，元素不重复需重写hashCode和equals。
+
+HashMap底层数据结构（数组+链表/红黑树），put流程，hash计算，扩容（2的幂次）。
+
+TreeMap红黑树实现，自然排序与定制排序（Comparator）。
+
+讲解要点：
+
+画图展示ArrayList扩容过程。
+
+对比HashSet与TreeSet的去重逻辑和顺序性。
+
+模拟HashMap的put过程，解释为何要重写hashCode和equals。
+
+引入并发修改异常（ConcurrentModificationException）及原因。
+
+7. I/O流
+核心概念：字节流与字符流、节点流与处理流、装饰器模式。
+
+字节流：InputStream/OutputStream，常用子类FileInputStream/FileOutputStream、BufferedInputStream/BufferedOutputStream。
+
+字符流：Reader/Writer，常用子类FileReader/FileWriter、BufferedReader/BufferedWriter、InputStreamReader/OutputStreamWriter（转换流）。
+
+其他流：PrintStream、PrintWriter、ObjectInputStream/ObjectOutputStream（序列化与反序列化）、RandomAccessFile。
+
+NIO简介：Buffer、Channel、Path、Files。
+
+讲解要点：
+
+用拷贝文件的例子演示字节流和字符流的使用差异（字符流需考虑编码）。
+
+通过Buffered流讲解缓冲区的概念和作用。
+
+分析InputStreamReader如何衔接字节流和字符流（指定字符集）。
+
+序列化时讲解Serializable接口、serialVersionUID的作用、transient关键字。
+
+NIO部分重点介绍Files工具类的便捷方法，并对比传统IO与NIO的效率。
+
+8. 网络编程基础
+核心概念：IP地址、端口、TCP/IP协议、UDP协议。
+
+TCP编程：Socket与ServerSocket，实现简单客户端/服务器通信。
+
+UDP编程：DatagramSocket、DatagramPacket。
+
+URL处理：URL类、URLConnection。
+
+讲解要点：
+
+通过模拟简单的聊天程序演示TCP的建立连接、传输数据、断开连接过程。
+
+讲解TCP三次握手与四次挥手的抽象过程（不深入细节，但建立概念）。
+
+演示UDP的无连接特性（不可靠但快速）。
+
+引入InetAddress类获取主机信息。
+
+9. JDBC与数据库基础
+核心概念：JDBC（Java Database Connectivity）规范、驱动、连接、SQL语句执行。
+
+主要步骤：加载驱动→建立连接→创建Statement/PreparedStatement→执行SQL→处理ResultSet→释放资源。
+
+事务管理：setAutoCommit(false)、commit()、rollback()。
+
+连接池简介：为什么需要连接池（DataSource），常见连接池（如HikariCP）。
+
+讲解要点：
+
+通过实际操作演示PreparedStatement如何防止SQL注入。
+
+强调资源关闭的正确方式（try-with-resources）。
+
+讲解数据库连接池的工作原理（初始化连接、复用、超时等）。
+
+简单的CRUD操作结合Java实现。
+
+10. 开发工具与版本控制
+IDE：Eclipse或IntelliJ IDEA的使用（工程创建、调试、快捷键、插件）。
+
+构建工具：Maven或Gradle基础，项目结构、依赖管理、坐标概念、生命周期（clean、compile、package等）。
+
+版本控制：Git基础（工作区、暂存区、本地仓库、远程仓库），常用命令（clone、add、commit、push、pull、branch、merge），解决冲突。
+
+讲解要点：
+
+演示IDE断点调试（step into/over、条件断点、变量查看）。
+
+用Maven创建一个多模块项目，解释pom.xml关键元素。
+
+Git部分通过实际模拟多人协作场景，展示分支合并和冲突解决。
+
+11. 数据结构与算法入门
+核心数据结构：数组、链表（单向、双向）、栈、队列、树（二叉树、二叉搜索树）、哈希表。
+
+基本算法：排序（冒泡、选择、插入、快速排序）、查找（顺序、二分）、递归、简单的动态规划（如斐波那契）。
+
+复杂度分析：时间复杂度（大O表示法）、空间复杂度。
+
+讲解要点：
+
+用图例展示数组和链表在内存中的布局及操作效率。
+
+手写快速排序并分析其分治思想。
+
+通过计算斐波那契数列引出递归和备忘录优化。
+
+强调算法在实际开发中的应用（如数据库索引B+树、HashMap哈希）。
+
+12. 设计原则初步
+核心原则：单一职责原则（SRP）、开闭原则（OCP）、里氏替换原则（LSP）、依赖倒置原则（DIP）、接口隔离原则（ISP）、迪米特法则（LoD）。
+
+讲解要点：
+
+结合代码重构实例讲解每个原则的体现。
+
+例如，单一职责：一个类不应承担过多职责；开闭原则：对扩展开放，对修改关闭（通过抽象或接口实现）。
+
+引导学生思考如何设计可维护的代码，为后续设计模式打基础。
+
+第二阶段：Java中级工程师
+目标：深入理解Java核心机制，掌握JVM、多线程并发、主流框架、数据库优化、常用设计模式，能够独立承担模块设计，解决复杂业务问题。
+
+知识点大纲
+JVM内存管理
+
+多线程与并发编程进阶
+
+网络编程进阶（NIO、Netty）
+
+设计模式深入
+
+Spring框架核心
+
+Spring MVC与Web开发
+
+持久层框架（MyBatis、JPA）
+
+数据库高级
+
+Linux基础与运维
+
+构建工具高级与持续集成
+
+测试策略（单元测试、集成测试）
+
+项目实践与重构
+
+知识点列表及详解
+1. JVM内存管理
+内存区域：程序计数器、虚拟机栈、本地方法栈、堆、方法区（元空间）、运行时常量池。
+
+对象创建过程：类加载检查→分配内存（指针碰撞/空闲列表）→初始化零值→设置对象头→执行<init>方法。
+
+垃圾回收（GC）：
+
+判断对象存活：引用计数法、可达性分析（GCRoots）。
+
+引用类型：强引用、软引用、弱引用、虚引用。
+
+垃圾回收算法：标记-清除、标记-复制、标记-整理、分代收集。
+
+垃圾收集器：Serial、ParNew、Parallel Scavenge、CMS、G1（核心特点、适用场景）。
+
+类加载机制：加载、链接（验证、准备、解析）、初始化。双亲委派模型（破坏双亲委派的场景如Tomcat类加载器）。
+
+性能调优初步：常用JVM参数（堆大小、栈大小、GC日志、OOM异常处理）。
+
+讲解要点：
+
+用图形化方式展示JVM内存划分及对象访问方式（句柄池与直接指针）。
+
+通过代码制造内存泄漏，然后利用工具（jvisualvm、jconsole）分析堆转储。
+
+演示不同GC配置下程序的停顿表现，引出调优思路。
+
+深入分析双亲委派模型的源码实现（ClassLoader.loadClass）。
+
+2. 多线程与并发编程进阶
+线程安全机制：synchronized底层（monitor、对象头、锁升级）、volatile内存语义、final的线程安全。
+
+JUC包核心组件：
+
+Lock体系：ReentrantLock（可重入、公平锁、可中断）、Condition、ReentrantReadWriteLock。
+
+AQS（抽象队列同步器）原理：核心数据结构（CLH队列变体）、独占/共享模式。
+
+并发容器：ConcurrentHashMap（JDK7分段锁与JDK8 CAS+synchronized）、CopyOnWriteArrayList、BlockingQueue（ArrayBlockingQueue、LinkedBlockingQueue等）。
+
+线程池：ThreadPoolExecutor核心参数（corePoolSize、maximumPoolSize、keepAliveTime、workQueue、handler）、提交任务流程、拒绝策略；Executors工厂类创建常见线程池（FixedThreadPool、CachedThreadPool等）的隐患。
+
+同步工具：CountDownLatch、CyclicBarrier、Semaphore、Exchanger。
+
+Fork/Join框架：工作窃取算法。
+
+Java内存模型（JMM）：主内存与工作内存、原子性、可见性、有序性、happens-before规则。
+
+讲解要点：
+
+通过案例演示ReentrantLock与synchronized的区别（如尝试非阻塞获取锁）。
+
+剖析AQS的acquire/release流程，并手写简化版AQS。
+
+讲解ConcurrentHashMap的并发度优化演进，并对比HashTable。
+
+用生产者-消费者模式演练BlockingQueue。
+
+自定义线程池并分析拒绝策略的影响。
+
+结合JMM解释volatile如何保证可见性及禁止指令重排。
+
+3. 网络编程进阶（NIO、Netty）
+传统IO阻塞模型：BIO（Blocking IO）的局限性（每连接一线程）。
+
+NIO核心组件：
+
+Buffer（ByteBuffer、CharBuffer等）：容量、位置、限制、标记；直接缓冲区与非直接缓冲区。
+
+Channel（FileChannel、SocketChannel、ServerSocketChannel）：与流的区别（双向读写）。
+
+Selector：多路复用器，注册事件（OP_ACCEPT、OP_READ、OP_WRITE），select()阻塞轮询。
+
+NIO编程模型：单线程Reactor模式，通过Selector处理多个连接。
+
+Netty框架：
+
+Netty简介与优势（异步、事件驱动、零拷贝）。
+
+核心组件：Bootstrap/ServerBootstrap、EventLoopGroup、ChannelPipeline、ChannelHandler、ChannelFuture。
+
+编解码器：ByteToMessageDecoder、MessageToByteEncoder，常用编解码器（StringEncoder等）。
+
+粘包/拆包解决方案：LineBasedFrameDecoder、DelimiterBasedFrameDecoder、FixedLengthFrameDecoder、LengthFieldBasedFrameDecoder。
+
+Netty的高级特性：零拷贝（文件传输FileRegion、CompositeByteBuf）、内存池。
+
+讲解要点：
+
+对比BIO和NIO的代码实现，展示如何用单线程处理多个连接。
+
+通过图解阐述Selector、Channel、Buffer的关系。
+
+用Netty实现简单的HTTP服务器或聊天程序，逐步讲解组件职责。
+
+演示粘包/拆包现象，并用LengthFieldBasedFrameDecoder解决。
+
+深入Netty的ByteBuf设计，讲解池化与引用计数。
+
+4. 设计模式深入
+创建型模式：单例模式（饿汉、懒汉、双重检查锁、静态内部类、枚举）、工厂方法模式、抽象工厂模式、建造者模式、原型模式。
+
+结构型模式：适配器模式、装饰器模式、代理模式（静态代理、动态代理JDK/CGLIB）、外观模式、桥接模式、组合模式、享元模式。
+
+行为型模式：策略模式、观察者模式、模板方法模式、责任链模式、迭代器模式、命令模式、状态模式、备忘录模式、访问者模式、中介者模式、解释器模式。
+
+设计模式在JDK/框架中的体现：如Iterator（迭代器）、Comparator（策略）、InputStream（装饰器）、Spring中的单例、代理、模板方法等。
+
+讲解要点：
+
+每个模式结合真实业务场景讲解（如订单状态用状态模式）。
+
+重点讲解动态代理的实现原理（JDK基于接口，CGLIB基于继承）。
+
+通过类图和序列图展示模式中对象间的交互。
+
+引导学生思考模式间的联系与区别（如策略与状态）。
+
+5. Spring框架核心
+IoC容器：
+
+BeanFactory与ApplicationContext区别。
+
+Bean定义（BeanDefinition）与注册。
+
+生命周期：实例化→属性赋值→初始化（InitializingBean、init-method）→使用→销毁（DisposableBean、destroy-method）。
+
+作用域：singleton、prototype、request、session。
+
+依赖注入（DI）：构造器注入、setter注入、字段注入，循环依赖的解决（三级缓存机制）。
+
+AOP：
+
+概念：切面（Aspect）、连接点（Joinpoint）、通知（Advice）、切入点（Pointcut）、织入（Weaving）。
+
+实现：JDK动态代理与CGLIB，Spring AOP的配置方式（XML、注解@Aspect）。
+
+应用场景：日志、事务、安全。
+
+Spring事务管理：
+
+编程式事务与声明式事务（@Transactional）。
+
+事务属性：传播行为（REQUIRED、REQUIRES_NEW等）、隔离级别、回滚规则。
+
+底层实现：AOP + 事务管理器（如DataSourceTransactionManager）。
+
+讲解要点：
+
+手写迷你版IoC容器，加深理解。
+
+通过调试源码展示Bean的创建过程及三级缓存如何解决循环依赖。
+
+对比JDK动态代理和CGLIB的使用场景（目标类无接口只能用CGLIB）。
+
+通过案例演示@Transactional在不同传播行为下的效果。
+
+6. Spring MVC与Web开发
+Spring MVC核心组件：DispatcherServlet、HandlerMapping、HandlerAdapter、ViewResolver、ModelAndView。
+
+请求处理流程：DispatcherServlet接收请求→查找Handler→执行Handler→返回ModelAndView→解析视图→渲染响应。
+
+注解驱动开发：@Controller、@RequestMapping、@RequestParam、@PathVariable、@ResponseBody、@RestController、@RequestBody、@ModelAttribute。
+
+数据绑定与验证：@InitBinder、Validator接口、JSR-303 Bean验证（@Valid）。
+
+文件上传与下载：MultipartResolver。
+
+RESTful API设计：HTTP方法语义、状态码、资源设计。
+
+讲解要点：
+
+通过断点追踪一次请求在Spring MVC中的完整流程。
+
+演示RESTful API的创建，并用Postman测试。
+
+讲解@ResponseBody如何通过HttpMessageConverter将对象转为JSON。
+
+讨论RESTful设计的最佳实践（如版本控制、HATEOAS简介）。
+
+7. 持久层框架（MyBatis、JPA）
+MyBatis：
+
+核心配置：SqlSessionFactory、SqlSession、Mapper接口与XML映射文件。
+
+动态SQL（if、choose、where、set、foreach）。
+
+缓存机制：一级缓存（SqlSession级别）、二级缓存（Mapper级别）。
+
+插件机制（Interceptor）：分页插件PageHelper原理。
+
+与Spring整合：MyBatis-Spring适配器。
+
+JPA/Hibernate：
+
+实体映射注解（@Entity、@Table、@Id、@GeneratedValue、@Column、关联映射@OneToMany等）。
+
+实体生命周期与状态（瞬时、持久、游离、删除）。
+
+持久化上下文（Persistence Context）与一级缓存。
+
+JPQL与Criteria API。
+
+懒加载与N+1问题。
+
+乐观锁与悲观锁。
+
+对比与选型：MyBatis与JPA的适用场景。
+
+讲解要点：
+
+通过配置MyBatis逆向工程生成代码，并分析Mapper接口与XML的绑定原理。
+
+演示动态SQL如何拼装复杂查询条件。
+
+分析MyBatis的一级缓存失效场景及二级缓存配置。
+
+JPA部分重点讲解关联映射和懒加载陷阱，并用实体图（Entity Graph）解决N+1问题。
+
+结合实际需求讨论何时选择MyBatis（灵活SQL）或JPA（快速开发）。
+
+8. 数据库高级
+索引优化：B+树索引结构、聚集索引与辅助索引、复合索引最左前缀原则、索引覆盖、索引下推（MySQL 5.6+）、索引失效场景（如隐式类型转换）。
+
+SQL优化：慢查询日志、Explain执行计划解读（type、key、rows、Extra等）、大表分页优化（延迟关联）。
+
+事务与锁：事务ACID、隔离级别（读未提交、读已提交、可重复读、串行化）及实现（MVCC、锁）、MVCC原理（undo日志、ReadView）、行锁（记录锁、间隙锁、临键锁）与表锁、死锁检测与处理。
+
+数据库设计：三大范式、反范式设计、分库分表（垂直拆分、水平拆分）概念、主键设计（雪花算法、UUID自增对比）。
+
+讲解要点：
+
+用B+树图解释为什么索引能加速查找。
+
+通过实际SQL语句演示Explain各字段含义。
+
+使用两个客户端模拟不同隔离级别下的脏读、不可重复读、幻读现象。
+
+讲解MVCC如何实现可重复读（RR）下的快照读。
+
+引入ShardingSphere概念，为后续分库分表铺垫。
+
+9. Linux基础与运维
+常用命令：文件操作（ls、cd、cp、mv、rm、find、tar）、权限管理（chmod、chown）、进程管理（ps、top、kill、nohup）、网络命令（netstat、ping、curl、wget）、文本处理（grep、awk、sed、vim）。
+
+Shell脚本：变量、条件判断、循环、函数，编写简单脚本（如备份日志）。
+
+应用部署：JDK安装、Tomcat/Nginx配置、项目打包（jar/war）与运行。
+
+系统监控：CPU（top、vmstat）、内存（free）、磁盘（df、iostat）、网络（sar）。
+
+讲解要点：
+
+通过模拟线上问题（如CPU飙升）指导使用top+jstack分析线程栈。
+
+演示grep、awk组合统计日志中的异常次数。
+
+手写一个简单的服务启停脚本。
+
+10. 构建工具高级与持续集成
+Maven高级：聚合与继承、多模块构建、自定义插件、settings.xml配置（私服、镜像）。
+
+Gradle：Groovy/Kotlin DSL基础、构建脚本、依赖管理、多项目构建、性能优化（守护进程、增量编译）。
+
+持续集成（CI）：Jenkins基础（安装、Job配置、构建触发器、Pipeline）、GitLab CI/CD概念。
+
+讲解要点：
+
+演示Maven如何通过profile实现不同环境的配置（dev/test/prod）。
+
+对比Maven和Gradle的优劣（灵活性、性能）。
+
+用Jenkins搭建一个简单的自动构建任务，从Git拉取代码→编译→打包→部署。
+
+11. 测试策略
+单元测试：JUnit 4/5（断言、生命周期、参数化测试）、Mockito（mock对象、验证）、PowerMock（静态方法、私有方法mock）。
+
+集成测试：Spring测试（@SpringBootTest、@TestConfiguration）、数据库测试（@DataJpaTest、@MybatisTest、嵌入式数据库H2）。
+
+性能测试：JMeter基础（线程组、取样器、监听器）、简单压测与结果分析。
+
+代码覆盖率：JaCoCo插件。
+
+讲解要点：
+
+用Mockito模拟外部依赖编写单元测试，保证测试隔离。
+
+演示SpringBoot集成测试，启动真实或模拟环境。
+
+通过JMeter对某个接口进行并发压测，观察TPS和响应时间。
+
+12. 项目实践与重构
+项目实践：基于SSM/SpringBoot完成一个小型项目（如博客系统、电商后台），贯穿前面所有知识点。
+
+代码重构：识别坏味道（过长方法、过大类、重复代码、耦合过高）、使用设计模式优化、遵循SOLID原则。
+
+讲解要点：
+
+引导学习者从需求分析、数据库设计、模块划分开始，逐步实现。
+
+在代码审查中发现重构点，演示如何逐步改善。
+
+强调重构与添加新功能的平衡，以及测试的重要性。
+
+第三阶段：Java高级工程师 / 架构师
+目标：具备分布式系统设计能力，掌握微服务架构、容器化、高并发处理、性能调优、大数据基础、架构方法论与软技能，能够主导技术选型、系统分解、解决复杂技术难题。
+
+知识点大纲
+分布式基础与理论
+
+微服务架构（Spring Cloud / Dubbo）
+
+服务治理与容器化（Docker、Kubernetes）
+
+消息队列与异步处理
+
+缓存架构与分布式缓存
+
+分布式数据库与分库分表
+
+分布式事务
+
+高并发处理与流量削峰
+
+性能调优与全链路压测
+
+安全架构
+
+大数据基础（Hadoop、Spark、Flink简介）
+
+监控与运维（Prometheus、ELK、APM）
+
+架构设计方法论
+
+软技能与团队管理
+
+知识点列表及详解
+1. 分布式基础与理论
+CAP理论：一致性（Consistency）、可用性（Availability）、分区容错性（Partition tolerance）的权衡，BASE理论（Basically Available, Soft state, Eventually consistent）。
+
+一致性模型：强一致性、弱一致性、最终一致性。
+
+分布式协议与算法：
+
+共识算法：Paxos（Basic Paxos、Multi Paxos）、Raft（领导者选举、日志复制）。
+
+分布式事务协议：2PC（两阶段提交）、3PC、TCC（补偿事务）。
+
+一致性哈希算法（解决分布式缓存节点扩容问题）。
+
+分布式ID生成：UUID、雪花算法（Snowflake）、数据库自增、Redis原子自增。
+
+讲解要点：
+
+通过实例分析CAP在实际系统中的取舍（如ZooKeeper保证CP，Eureka保证AP）。
+
+用动画展示Raft的领导者选举和日志复制过程。
+
+手写一致性哈希模拟节点增加时数据迁移。
+
+剖析雪花算法的结构（时间戳+机器ID+序列号）及时钟回拨问题。
+
+2. 微服务架构（Spring Cloud / Dubbo）
+微服务核心概念：服务注册与发现、配置中心、网关、负载均衡、服务调用、熔断与限流。
+
+Spring Cloud生态：
+
+服务注册：Eureka（AP）、Consul（CP）、Nacos（AP/CP可配）。
+
+客户端负载均衡：Ribbon（已进入维护）、Spring Cloud LoadBalancer。
+
+声明式HTTP客户端：Feign/OpenFeign。
+
+服务容错：Hystrix（已停更）、Resilience4j、Sentinel（流量防卫兵）。
+
+网关：Spring Cloud Gateway（基于WebFlux）、Zuul 1.x（已过时）。
+
+配置中心：Spring Cloud Config、Nacos Config。
+
+分布式追踪：Spring Cloud Sleuth + Zipkin。
+
+Dubbo：RPC框架核心概念（服务暴露、引用、集群容错、负载均衡）、与Spring Cloud对比。
+
+Service Mesh：Istio简介（数据平面Envoy、控制平面Pilot等）。
+
+讲解要点：
+
+搭建一个完整的Spring Cloud微服务示例（注册中心、配置中心、网关、服务A调用服务B）。
+
+通过压测演示Sentinel的流控、降级、系统保护规则。
+
+分析Feign的动态代理实现与HTTP调用细节。
+
+讨论微服务架构的挑战（网络延迟、数据一致性、分布式事务）。
+
+3. 服务治理与容器化（Docker、Kubernetes）
+Docker：
+
+镜像与容器概念、Dockerfile编写、镜像分层、仓库（Docker Hub、私有Harbor）。
+
+常用命令（run、exec、ps、stop、rm、logs）、数据卷（Volume）、网络模式（bridge、host、overlay）。
+
+Kubernetes（K8s）：
+
+核心概念：Pod、Deployment、Service、Ingress、ConfigMap、Secret、Namespace。
+
+控制器：ReplicaSet、Deployment（滚动更新、回滚）、StatefulSet、DaemonSet、Job/CronJob。
+
+服务发现与负载均衡：Service（ClusterIP、NodePort、LoadBalancer）、Ingress Controller（如Nginx Ingress）。
+
+存储：PersistentVolume（PV）、PersistentVolumeClaim（PVC）、StorageClass。
+
+配置与密钥：ConfigMap、Secret（Opaque、docker-registry）。
+
+调度与弹性伸缩：HPA（Horizontal Pod Autoscaler）、资源请求与限制（Request/Limit）。
+
+容器化微服务：如何将Spring Boot应用打包镜像，部署到K8s。
+
+讲解要点：
+
+编写Dockerfile将Spring Boot应用打包，并用docker-compose编排多个服务。
+
+在Minikube或Kind上部署一个简单微服务，体验kubectl常用命令。
+
+演示滚动更新、回滚、HPA自动扩容。
+
+讲解Service与Pod的绑定机制（标签选择器）。
+
+4. 消息队列与异步处理
+消息队列作用：解耦、异步、削峰填谷。
+
+常见MQ对比：ActiveMQ、RabbitMQ、RocketMQ、Kafka（吞吐量、可靠性、功能特性）。
+
+核心概念：生产者、消费者、主题（Topic）、队列、分区、偏移量、消息确认（ACK）。
+
+RabbitMQ：Exchange（Direct、Topic、Fanout、Headers）、Queue、Binding、消息持久化、消费确认（basicAck/basicNack）、死信队列。
+
+Kafka：
+
+架构：Producer、Consumer、Consumer Group、Broker、Topic、Partition、Replica。
+
+消息存储：分段日志、索引文件。
+
+消息可靠性：ACK（0/1/all）、重试、幂等性、事务。
+
+消费者组与Rebalance机制。
+
+消息可靠性保证：生产端重试、Broker持久化、消费端手动ACK。
+
+幂等性设计：利用消息唯一ID防止重复消费。
+
+讲解要点：
+
+用RabbitMQ实现简单的订单处理（订单创建→发送消息→库存/积分处理）。
+
+搭建Kafka集群，演示生产者发送消息、消费者组消费，查看分区日志。
+
+分析Kafka的高吞吐原因（零拷贝、顺序写、批量压缩）。
+
+探讨消息队列可能带来的问题（消息堆积、顺序消费、分布式事务）。
+
+5. 缓存架构与分布式缓存
+缓存策略：Cache Aside、Read/Write Through、Write Behind。
+
+本地缓存：Guava Cache、Caffeine（高性能）、适用场景及局限。
+
+分布式缓存Redis：
+
+数据结构：String、Hash、List、Set、Sorted Set、Bitmap、HyperLogLog、Geo。
+
+持久化：RDB（快照）、AOF（追加文件）、混合持久化。
+
+高可用：主从复制、哨兵（Sentinel）、集群（Cluster）架构（哈希槽、节点通信）。
+
+淘汰策略：LRU、LFU、TTL。
+
+事务与Lua脚本（原子性）。
+
+缓存问题：缓存穿透（布隆过滤器）、缓存击穿（互斥锁）、缓存雪崩（过期时间打散、多级缓存）。
+
+多级缓存：本地缓存（Caffeine） + Redis + 数据库。
+
+讲解要点：
+
+通过Redis命令演示各数据结构的使用场景（如排行榜用ZSet）。
+
+搭建Redis Cluster集群，模拟节点故障自动转移。
+
+用代码实现防止缓存穿透的布隆过滤器。
+
+讨论缓存与数据库一致性的常见方案（延迟双删、消息队列）。
+
+6. 分布式数据库与分库分表
+分库分表概念：垂直分库（按业务拆分）、垂直分表（拆分字段）、水平分库/分表（按分片键）。
+
+分库分表中间件：ShardingSphere（Sharding-JDBC、Sharding-Proxy）、MyCat。
+
+分片策略：取模、范围、一致性哈希、时间维度。
+
+全局主键生成：雪花算法、UUID、号段模式（Leaf）。
+
+分库分表带来的问题：跨库join（应用层组合或冗余）、跨库事务（分布式事务）、排序分页（全局排序后取）。
+
+分布式数据库：TiDB（NewSQL）简介、原理（TiKV、PD）。
+
+讲解要点：
+
+演示Sharding-JDBC配置分库分表，执行插入和查询。
+
+通过案例说明分库后如何解决跨库join（字段冗余或多次查询）。
+
+讨论分库分表的业务维度选择（如用户ID、订单ID）。
+
+引入TiDB，了解其如何兼容MySQL协议并支持水平扩展。
+
+7. 分布式事务
+分布式事务场景：跨库事务、跨服务调用。
+
+XA协议（2PC/3PC）：DTP模型、XA接口、JTA实现（如Atomikos），优缺点（阻塞、性能低）。
+
+TCC（Try-Confirm-Cancel）：业务侵入性强，需实现三个阶段接口，空回滚、幂等、防悬挂。
+
+本地消息表（最终一致性）：基于MQ的可靠性消息（RocketMQ事务消息、RabbitMQ+本地表）。
+
+最大努力通知：适用于对实时性要求不高的场景。
+
+SAGA：长事务补偿模式，正向与反向操作。
+
+Seata：开源分布式事务解决方案，AT模式（自动补偿）、TCC模式、SAGA模式、XA模式。
+
+讲解要点：
+
+通过电商下单扣库存场景演示不同分布式事务方案的实现。
+
+用RocketMQ事务消息模拟订单与积分服务的一致性。
+
+分析Seata AT模式的全局锁与数据源代理原理。
+
+对比各方案的优缺点，根据业务场景选型。
+
+8. 高并发处理与流量削峰
+高并发核心思想：无状态、拆分、缓存、异步、限流、降级、熔断。
+
+限流算法：计数器、滑动窗口、漏桶、令牌桶（Guava RateLimiter、Redis+Lua实现令牌桶）。
+
+降级与熔断：服务降级（返回兜底数据）、熔断（断开调用，防止雪崩），Hystrix/Sentinel实现原理。
+
+流量削峰：消息队列、请求合并、分层过滤（前端拦截）。
+
+CDN与静态化：动静分离，CDN加速。
+
+秒杀系统设计：
+
+前端：按钮限流、静态页面。
+
+后端：独立部署、预减库存（Redis）、队列削峰、限流、防止超卖（Lua脚本）、MQ异步下单。
+
+讲解要点：
+
+手写基于Redis+Lua的令牌桶限流。
+
+设计秒杀系统的整体架构图，逐层讲解。
+
+通过JMeter模拟高并发，观察限流和降级效果。
+
+9. 性能调优与全链路压测
+JVM调优：GC日志分析、调优参数（-Xms、-Xmx、-XX:+UseG1GC等）、常见OOM排查（heap dump、MAT分析）。
+
+数据库调优：慢SQL优化、索引优化、连接池调优（HikariCP参数）。
+
+Web容器调优：Tomcat线程池配置（maxThreads、acceptCount）、NIO配置、Spring Boot内嵌容器调优。
+
+全链路压测：目的、压测工具（JMeter、LoadRunner、Locust）、链路跟踪（SkyWalking、Zipkin）、影子库/影子表。
+
+性能监控工具：Arthas（在线诊断）、Prometheus+ Grafana。
+
+讲解要点：
+
+模拟线上CPU飙升，用Arthas排查（thread命令找出高CPU线程，分析栈）。
+
+用JMeter对某个接口压测，用JVisualVM监控JVM内存，找出性能瓶颈。
+
+讲解全链路压测的落地方式（压测流量标记、数据隔离）。
+
+10. 安全架构
+网络安全：HTTPS（SSL/TLS握手）、防火墙、WAF（Web应用防火墙）。
+
+应用安全：
+
+认证与授权：Spring Security（OAuth2、JWT）、RBAC权限模型、SSO（单点登录）原理（CAS、OIDC）。
+
+常见攻击与防御：SQL注入、XSS、CSRF、DDoS（分布式拒绝服务）。
+
+密码加密：BCrypt、加盐哈希。
+
+数据安全：传输加密（TLS）、存储加密（AES、国密）、脱敏、数据备份。
+
+讲解要点：
+
+搭建Spring Security OAuth2授权服务，实现JWT鉴权。
+
+演示XSS攻击及过滤（HTML转义）。
+
+讲解HTTPS加密流程（非对称加密交换对称密钥）。
+
+讨论API签名设计（防篡改、防重放）。
+
+11. 大数据基础（Hadoop、Spark、Flink简介）
+Hadoop生态：HDFS（分布式文件系统）、MapReduce（计算模型）、YARN（资源调度）、Hive（数据仓库）、HBase（列式数据库）。
+
+Spark：内存计算、RDD、DataFrame、Spark SQL、Spark Streaming（微批处理）、适用场景。
+
+Flink：真正的流处理、事件时间、状态管理、Checkpoint、Flink SQL。
+
+数据同步工具：Sqoop、Canal（MySQL binlog增量订阅）、DataX。
+
+讲解要点：
+
+概述大数据技术栈的演进（批处理→流处理）。
+
+演示Hive进行离线统计分析。
+
+对比Spark Streaming与Flink的区别（微批 vs 实时流）。
+
+讲解Canal监听MySQL变更，投递到Kafka供下游使用（实时数仓场景）。
+
+12. 监控与运维（Prometheus、ELK、APM）
+监控体系：基础监控（CPU、内存、磁盘）、应用监控（QPS、RT、错误率）、业务监控（订单量、用户数）。
+
+Prometheus：时序数据库、指标采集（Exporter）、查询语言（PromQL）、AlertManager告警。
+
+Grafana：可视化仪表盘、数据源对接。
+
+日志收集ELK：Elasticsearch（存储与检索）、Logstash（日志采集与处理）、Kibana（可视化）、Filebeat（轻量采集）。
+
+APM（应用性能监控）：SkyWalking、Pinpoint、Jaeger，分布式追踪（Trace、Span）。
+
+讲解要点：
+
+搭建Prometheus监控Spring Boot应用（micrometer集成），配置Grafana展示。
+
+用ELK收集Spring Boot日志，并实现错误日志告警。
+
+部署SkyWalking，演示微服务调用链追踪。
+
+讨论如何通过监控发现系统瓶颈和异常。
+
+13. 架构设计方法论
+架构设计流程：需求分析→非功能性需求→技术选型→架构设计→演进。
+
+架构风格：分层架构、微服务、事件驱动、CQRS（命令查询职责分离）、EDA（事件驱动架构）、Serverless。
+
+领域驱动设计（DDD）：
+
+战略设计：领域、子域、限界上下文、上下文映射。
+
+战术设计：实体、值对象、聚合、仓储、领域服务、领域事件。
+
+微服务划分与DDD限界上下文的关系。
+
+设计文档与架构图：4+1视图、UML建模。
+
+技术选型考量：团队能力、社区活跃度、License、性能、可维护性。
+
+讲解要点：
+
+以电商系统为例，进行DDD战略设计，划分限界上下文（订单、库存、支付）。
+
+对比CQRS与CRUD的适用场景，用事件溯源实现订单状态变更。
+
+强调架构演进思想（适度设计，避免过度设计）。
+
+14. 软技能与团队管理
+沟通能力：如何与产品、测试、运维等角色有效沟通，表达技术方案。
+
+技术分享与培训：如何组织团队学习，编写技术博客。
+
+项目管理：敏捷开发（Scrum、Kanban）、任务分解、风险预估、进度跟踪。
+
+技术领导力：技术决策、培养新人、代码审查、推动技术革新。
+
+职业规划：技术深度与广度平衡，保持学习热情。
+
+讲解要点：
+
+模拟方案评审会，让学习者阐述自己的设计并接受质疑。
+
+分享真实项目中踩过的坑，培养风险意识。
+
+引导学习者建立个人知识体系，持续关注前沿技术。
+
+结语
+本课程覆盖了从Java小白到资深架构师的完整知识体系。学习者应根据自身阶段，循序渐进地掌握每个知识点，并在实际项目中反复实践、总结。架构师之路没有终点，需要不断拥抱变化、拓宽视野，最终形成自己的方法论和判断力。愿这套课程能成为你成长路上的得力助手！
