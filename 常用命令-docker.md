@@ -20,7 +20,7 @@ sudo service docker restart
 
 ------
 
-![image-20260321162722830](C:\Users\24276\AppData\Roaming\Typora\typora-user-images\image-20260321162722830.png)
+![image-20260321162722830](C:\Users\24276\Desktop\file\面试\docker图片\image-20260321162722830.png)
 
 docker images 列举所有docker镜像
 
@@ -54,7 +54,7 @@ docker run 填镜像名字orID 使用镜像创建并运行容器
 
 还有一种方式实现挂载卷，命名卷挂载
 
-![image-20260321164816966](C:\Users\24276\AppData\Roaming\Typora\typora-user-images\image-20260321164816966.png)
+![image-20260321164816966](C:\Users\24276\Desktop\file\面试\docker图片\image-20260321164816966.png)
 
 ####  挂载卷
 
@@ -154,7 +154,7 @@ docker push kanm7/docker_test
 
 docker network list 展示出所有网络
 
-![image-20260321201405307](C:\Users\24276\AppData\Roaming\Typora\typora-user-images\image-20260321201405307.png)
+![image-20260321201405307](C:\Users\24276\Desktop\file\面试\docker图片\image-20260321201405307.png)
 
 docker network rm 自定义网络
 
@@ -190,7 +190,7 @@ docker compose使用yml文件管理多个容器，里面列出了容器之间是
 
 右侧最顶级的是services元素，每个服务也就是一个service都对应一个容器，左侧的--name也就是容器名，在右侧就变成了service名，左侧最后的镜像名，在右侧写在了image后面也表示镜像名，左边的-e参数对应右边的environments，都是环境变量的意思，左侧的-v对应右侧的volumes，也就是挂载卷，左侧的-p对应右边的ports，也就是端口映射，左右两边唯一的区别就是，左边定义了一个子网network1，而右边没有，因为docker会为每一个compose文件都自动创建一个子网，同一个compose里面定义的所有容器，都会自动加入同一个子网。
 
-![image-20260321202925899](C:\Users\24276\AppData\Roaming\Typora\typora-user-images\image-20260321202925899.png)
+![image-20260321202925899](C:\Users\24276\Desktop\file\面试\docker图片\image-20260321202925899.png)
 
 docker compose还有一个额外功能：可以自定义容器的启动顺序，比如上面的depents_on 
 
@@ -202,7 +202,7 @@ docker compose up 启动文件里面定义的所有容器  重复执行没用
 
 -d：在后台运行
 
-![image-20260321203125473](C:\Users\24276\AppData\Roaming\Typora\typora-user-images\image-20260321203125473.png)
+![image-20260321203125473](C:\Users\24276\Desktop\file\面试\docker图片\image-20260321203125473.png)
 
 但是这两个容器跟我们在service中定义的名字不同，在前面加了一个前缀，在后面加了一个编号
 
@@ -214,4 +214,4 @@ docker compose start 把停止的命令启动起来
 
 我们在执行docker compose命令时，它会自动识别当前目录下的严格叫做docker-compose.yaml这个文件，如果改了这个文件名，再使用docker compose命令就找不到了。对于这种非标准的文件名，我们可以在docker compose后面加 -f 也就是指定文件名，就可以识别文件了
 
-![image-20260321203559748](C:\Users\24276\AppData\Roaming\Typora\typora-user-images\image-20260321203559748.png)
+![image-20260321203559748](C:\Users\24276\Desktop\file\面试\docker图片\image-20260321203559748.png)
